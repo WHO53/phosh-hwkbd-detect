@@ -70,7 +70,10 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    wl_display_roundtrip(display);
+    // Event loop to continuously listen for device state changes
+    while (wl_display_dispatch(display) != -1) {
+        // Waiting for events, handle them as they come in
+    }
 
     // Cleanup
     if (state.device_state)
